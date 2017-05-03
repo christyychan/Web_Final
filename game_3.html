@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GAME 3</title>
+	<style type="text/css">
+		body{
+			background-color: #7466B1;
+		}
+		html,body, #container{
+			height:98%;
+		}
+		#container{
+			width: 1200px;
+			
+			margin: auto;
+			background-color: #C4C8FF;
+
+		}
+		h1{
+			font-size: 25px;
+
+			padding: 20px;
+			display: flex;
+			justify-content: center;
+			width: 75%;
+			margin: auto;
+			}
+		img{
+			width:65%;
+		}
+		.games div{
+			width: 100%;
+			display: block;
+			float: left;
+			text-align: center;
+		}
+		a{
+			text-decoration: none;
+			color:black;
+		}
+		h1:hover{
+			color: #7466B1;
+		}
+	</style>
+</head>
+<body>
+<div id="container">
+<a href="index.html"><h1> INSERT TITLE </h1></a>
+<section class="games">
+	<div id="game"></div>
+</section>
+
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.8/p5.min.js"></script>
+<script>
+var alien, nerf, aim, target;
+var Alix=0;
+
+function preload(){
+	alien = loadImage("Game3/pics/alien.png");
+	nerf = loadImage("Game3/pics/nerfGun.png");
+	aim = loadImage("Game3/pics/target.png");
+	target = loadImage("Game3/pics/vector.png");
+}
+function setup(){
+    var canvas=createCanvas(1000,550);
+    canvas.parent('game');
+    bob = new Bullet(mouseX + 50, 750);
+  }
+
+  function draw(){
+  	background(255);
+  	image(alien, Alix, 25);
+  	image(alien, Alix-300, 25);
+  	image(alien, Alix-600, 25);
+  	image(alien, Alix-900, 25);
+
+  	image(alien, Alix-150, 225);
+  	image(alien, Alix-450, 225);
+  	image(alien, Alix-750, 225);
+  	
+  	if (Alix<=950){
+  		Alix+=1;
+  	} else{
+  		Alix=0;
+  	}//end else
+
+  	image(nerf, mouseX, 375);
+   
+
+  	push();
+  	tint(0);
+  	image(aim, mouseX - (aim.width / 2), mouseY - (aim.height / 2));
+  	pop();
+  	bob.display();
+
+  	
+
+
+  }//end draw
+
+  function Bullet(xloc, yloc) {
+  var x = xloc;
+  var y = yloc;
+  
+  this.display = function() { 
+  if (mouseIsPressed){ //if the mouse is pressed the the bullet will be where the mouse is
+                      //it will also be in the middle of the ner gun scope
+      x = mouseX;
+      y = mouseY;
+  }else{
+    x=mouseX+50;
+    y=890;
+  } //end else
+      // the circle that represents the bullet being fired
+      noStroke();
+      fill(0,100);
+      ellipse(x, y, 25, 25);
+    } //end display
+} // end Bullet
+
+  </script>
+</body>
+</html>

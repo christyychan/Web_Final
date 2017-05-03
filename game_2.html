@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> GAME 2</title>
+	<style type="text/css">
+		body{
+			background-color: #7466B1;
+		}
+		html,body, #container{
+			height:98%;
+		}
+		#container{
+			width: 1200px;
+			
+			margin: auto;
+			background-color: #C4C8FF;
+
+		}
+		h1{
+			font-size: 25px;
+
+			padding: 20px;
+			display: flex;
+			justify-content: center;
+			width: 75%;
+			margin: auto;
+			}
+		img{
+			width:65%;
+		}
+		.games div{
+			width: 100%;
+			display: block;
+			float: left;
+			text-align: center;
+		}
+		a{
+			text-decoration: none;
+			color:black;
+		}
+		h1:hover{
+			color: #7466B1;
+		}
+	</style>
+</head>
+<body>
+<div id="container">
+<a href="index.html"><h1> INSERT TITLE </h1></a>
+<section class="games">
+	<div id="game"></div>
+</section>
+
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.8/p5.min.js"></script>
+<script>
+var dust;
+function preload(){
+	dust=loadImage("dust.png");
+}
+function setup(){
+    var canvas=createCanvas(1000,600);
+    canvas.parent('game');
+    background(255);
+
+  }
+
+  function draw(){
+      noStroke();
+      fill(255);
+      rect(mouseX,mouseY,30,30);
+      rectMode(RADIUS);
+
+
+     image(dust, random(1000), random(600));
+
+  }
+
+  function mousePressed(){
+    background(255);
+  }
+  </script>
+</body>
+</html>
