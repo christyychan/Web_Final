@@ -4,26 +4,33 @@
 	<title>LAME GAMES</title>
 	<style type="text/css">
 		body{
-			background-color: #7466B1;
+			background-color: #D68742;
 		}
 		html,body, #container{
 			height:98%;
 		}
 		#container{
-			width: 1200px;
-			
+			width: 100%;
 			margin: auto;
-			background-color: #C4C8FF;
+			background-color: #EDE86F;
+			height: 100%;
 
 		}
 		h1{
-			font-size: 25px;
+			font-size: 45px;
+			font-family: Helvetica;
 			padding: 20px;
 			display: flex;
 			justify-content: center;
 			width: 75%;
 			margin: auto;
+			color: #DE5197;
 			}
+		h3{
+			margin-top: -10px;
+			font-family: Helvetica;
+			color: #DE433C;
+		}
 		.games div{
 			width: 50%;
 			display: block;
@@ -37,17 +44,20 @@
 		.dots{
 			width: 25px;
 			}
-		#myImg, #myImg2 {
-			border-radius: 5px;
+		#myImg, #myImg2, #myImg3 {
+			border-radius: 10px;
+			margin-top: -10px;
+			padding: 5px;
 		    cursor: pointer;
 		    transition: 0.3s;
 		}
 
 #myImg:hover {opacity: 0.7;}
 #myImg2:hover {opacity: 0.7;}
+#myImg3:hover {opacity: 0.7;}
 
 /* The Modal (background) */
-.modal, .modal2 {
+.modal, .modal2, .modal3 {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -62,7 +72,7 @@
 }
 
 /* Modal Content (image) */
-.modal-content, .modal2-content {
+.modal-content, .modal2-content, .modal3-content {
     margin: auto;
     display: block;
     width: 80%;
@@ -82,7 +92,7 @@
 }*/
 
 /* Add Animation */
-.modal-content, .modal2-content, #caption {    
+.modal-content, .modal2-content, .modal3-content, #caption {    
     -webkit-animation-name: zoom;
     -webkit-animation-duration: 0.6s;
     animation-name: zoom;
@@ -150,6 +160,9 @@ button {
 <div id="container">
 
 <h1> LAME GAMES </h1>
+<center>
+	<h3>4 games of your choosing... but they are pretty lame</h3>
+</center>
 
 <div id="myModal" class="modal">
   <span class="close">&times;</span>
@@ -171,6 +184,16 @@ button {
   </div>
 </div>
 
+<div id="myModal3" class="modal3">
+  <span class="close">&times;</span>
+  <img class="modal3-content" id="img03">
+  <div id="link">
+  	<a href="pet.html">
+  		<button id="button1">Play</button>
+  	</a>
+  </div>
+</div>
+
 	<section class="games">
 		<div> 
 			<img id="myImg" src="game1.png" height="250">
@@ -179,10 +202,10 @@ button {
 			<img id="myImg2" src="game2.png" height="250">
 		</div>
 		<div> 
-			<img id="myImg" src="dust.jpg">
+			<img id="myImg3" src="game3.png" height="250">
 		</div>
 		<div> 
-			<img id="myImg" src="dust.jpg">
+			<img id="myImg" src="game1.png">
 		</div>
 		
 		<div class="clear"></div>
@@ -192,12 +215,15 @@ button {
 // Get the modal
 var modal = document.getElementById('myModal');
 var modal2 = document.getElementById('myModal2');
+var modal3 = document.getElementById('myModal3');
 
 // Get the image and insert it inside the modal - use its "alt" text as a caption
 var img = document.getElementById('myImg');
 var img2 = document.getElementById('myImg2');
+var img3 = document.getElementById('myImg3');
 var modalImg = document.getElementById("img01");
 var modalImg2 = document.getElementById("img02");
+var modalImg3 = document.getElementById("img03");
 var link = document.getElementById("link");
 var captionText = document.getElementById("caption");
 img.onclick = function(){
@@ -210,10 +236,16 @@ img2.onclick = function(){
     modalImg2.src = "explain2.png";
     link.style.display = "block";
 }
+img3.onclick = function(){
+    modal3.style.display = "block";
+    modalImg3.src = "explain3.png";
+    link.style.display = "block";
+}
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 var span2 = document.getElementsByClassName("close")[1];
+var span3 = document.getElementsByClassName("close")[2];
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() { 
@@ -221,6 +253,9 @@ span.onclick = function() {
 }
 span2.onclick = function() { 
     modal2.style.display = "none";
+}
+span3.onclick = function() { 
+    modal3.style.display = "none";
 }
 </script>
 </body>
