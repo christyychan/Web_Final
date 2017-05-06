@@ -1,12 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title> ADVENTURE TIME</title>
-	<link rel="stylesheet" href="style.css">
+	<title> MAD LIB </title>
+	<style>
+		body{
+	background-color: #7AECFF;
+
+	}
+	p{
+		font-size: 40px;
+		width: 600px;
+		margin: auto;
+		margin-top: 20px;
+	}
+	form div{
+		margin-bottom: 20px;
+	}
+	input[type="submit"]{
+		/*width: 50%;*/
+		margin-left:350px;	
+	}
+	#container{
+	 	width: 1000px;
+	 	margin: auto;
+	 	background-color: white;
+	 	height: 715px;
+	}
+	#my_form{
+		margin-left: 10px;
+	}
+	h2{
+	font-size: 30px;
+	color: #FFAC36;
+	margin: auto;
+	margin-top: 20px;
+	margin-left: 260px;
+	margin-bottom: 25px;
+}
+h3{
+	font-size: 50px;
+	color: #FFAC36;
+	margin: auto;
+	margin-top: 20px;
+	margin-left: 370px;
+	margin-bottom: 25px;
+}
+#reset_button{
+	/*display: none;*/
+}
+	</style>
+
 </head>
 <body>
 	<div id="container">
-	<h1>YOUR ADVENTURE</h1>
+	<center><h1>MAD LIB</h1></center>
+	
 	
 		<form action="" id="my_form">
 		<h2> Please fill in the following information </h2>
@@ -71,15 +119,16 @@
 			</div>
 
 			<div>
-				<input type="submit" id="submit_button value="SUBMIT"> 
+				<input type="submit" id="submit_button" value="SUBMIT"> 
 			</div>
-
+			
 			
 
 		</form>
 		<div id="response">
 				<p id="story"></p>
 				<h3 id="ending"></h3>
+				<input type="reset" id="reset_button" value="RESET">
 		</div>
 	</div>
 	<script src="form.js"></script>
