@@ -49,6 +49,7 @@
 	var cordX = 10;
 	var plus=true;
 	var minus= false;
+	var backgroundColor = 255;
 	// var cordY = 250;
 	function preload(){
 		bowl = loadImage('Dog/pics/bowl.png');
@@ -62,7 +63,7 @@
 	    canvas.parent('game');
 	}
 	function draw(){
-		background(255);
+		background(backgroundColor, backgroundColor, backgroundColor);
 		image(win, 350, 0);
 		// win.resize(300, 150)
 		image(bowl, 0, 300);
@@ -103,10 +104,12 @@
     		dogY = dogY + 10;
   		}
   		dead();
-  		// if (((mouseX >= 0) && (mouseX <= 0+bowl.width)) && ((mouseY >= 300) && (mouseY <= 300+bowl.height))) {
-    // 		dogX = dogX + 10;
-    // 		dogY = dogY + 10;
-  		// }
+  		if (((mouseX >= 350) && (mouseX <= 350+win.width)) && ((mouseY >= 0) && (mouseY <= win.height)) && backgroundColor==255) {
+    		backgroundColor = 0;
+  		} 
+  		else if (((mouseX >= 350) && (mouseX <= 350+win.width)) && ((mouseY >= 0) && (mouseY <= win.height)) && backgroundColor==0) {
+    		backgroundColor = 255;
+  		} 
 	}
 	
 	
