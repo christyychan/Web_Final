@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>GAME 2</title>
+	<title>FALLING APPLES</title>
+  <link href="https://fonts.googleapis.com/css?family=Inknut+Antiqua" rel="stylesheet">
+
 	<style type="text/css">
 		body{
-			background-color: #7466B1;
+      background-image: url("https://img.clipartfest.com/48587474542d5d891aa84d4a954a3b6d_forest-landscape-clipart-tree-background-free-clipart_1085-768.jpeg");
+      background-repeat: no-repeat;
+      background-size: 1400px 800px;
 		}
 		html,body, #container{
 			height:98%;
@@ -13,18 +17,26 @@
 			width: 1200px;
 			
 			margin: auto;
-			background-color: #C4C8FF;
 
 		}
 		h1{
-			font-size: 25px;
-
-			padding: 20px;
+			font-size: 50px;
+			/*padding-top: 0px;*/
 			display: flex;
-			justify-content: center;
-			width: 75%;
 			margin: auto;
+			width: 75%;
+      margin-top: -10px;
+			margin-left: 30px;
+      font-family: 'Inknut Antiqua', serif;
+
 			}
+      p{
+      margin-left: 170px;
+      margin-top: -30px;
+      font-size: 20px;
+      padding-bottom: 10px;
+      margin-left: 70px;
+    }
 		img{
 			width:65%;
 		}
@@ -38,14 +50,30 @@
 			text-decoration: none;
 			color:black;
 		}
-		h1:hover{
-			color: #7466B1;
-		}
+
+    h4{
+      /*-webkit-text-stroke: 0.5px white;*/
+      font-size: 20px;
+      text-align: right;
+      margin-right: 150px;
+      margin-top: -60px;
+      /*padding: 5px;*/
+      color: white;
+    }
+    a:link{
+    text-decoration: none;
+  }
+  h4:hover{
+    color: blue;
+    text-decoration: none;
+  } 
 	</style>
 </head>
 <body>
 <div id="container">
-<a href="index.html"><h1> INSERT TITLE </h1></a>
+<a href="index.html"><h1> FALLING APPLES </h1></a>
+<p>Catch the falling apples, but don't drop them</p>
+<a href="index.html"><h4>Lame Games</h4></a>
 <section class="games">
 	<div id="game"></div>
 </section>

@@ -28,9 +28,9 @@
 	}
 	h4{
 		text-align: right;
-      margin-right: 120px;
+      margin-right: 250px;
       margin-top: -40px;
-      color: #DE5197;
+      color: white;
 	}
 	a:link{
 		text-decoration: none;
@@ -84,14 +84,18 @@
 	}
 	function draw(){
 		background(backgroundColor, backgroundColor, backgroundColor);
+		fill(252, 246, 232);
+		noStroke();
+		rect(0, 300, 1000, 500)
 		image(win, 350, 0);
 		// win.resize(300, 150)
-		image(bowl, 0, 300);
+		
 		// bowl.resize(200, 200);
 		image(dog, cordX, 250);
 		dog.resize(dogX, dogY);
 		image(bed, 800, 300);
 		bed.resize(200, 120);
+		image(bowl, 0, 300);
 		
 		if (plus==true && minus==false){
 			cordX+=3;
