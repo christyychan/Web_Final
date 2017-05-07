@@ -3,11 +3,9 @@
 <head>
 	<title>Feed the Pet</title>
 </head>
+<link href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister" rel="stylesheet">
 <style type="text/css">
 	#rect{
-		/*width: 20px;
-		height: 20px;*/
-		/*background-color: rgb(255,0,127);*/
 		margin-top: 5%;
 		margin-bottom: 50%;
 	}
@@ -17,57 +15,101 @@
 		margin-left: 30%;
 		margin-right: 100%;*/
 	}
-	h1, p{
-		text-align: center;
+	h1{
+		text-align: left;
+		font-family: 'Love Ya Like A Sister', cursive;
+		font-size: 40px;
+	}
+	p{
+		margin-left: 10px;
+		font-family: Helvetica;
+		font-size: 20px;
+		margin-top: -10px; 
 	}
 </style>
 <body>
 <h1>Feed the Pet</h1>
-<p>Click on the pet to feed it!</p>
+<p>Click on the bowl to feed the corgi and bed to change time zone!</p>
 
 <center>
 	<!-- <div id="rect"> -->
-	<img id="rect" src="dog.png" height="30" width="20">
+	<!-- <img id="rect" src="dog.png" height="30" width="20"> -->
+	<section class="games">
+		<div id="game"></div>
+	</section>
 	<!-- </div> -->
 </center>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.8/p5.min.js"></script>
+
 <script>
-	var rect = document.getElementById("rect");
-	var size = 20;
+	var bowl, win, bed, dog;
+	var dogX = 100;
+	var dogY = 100;
+	var cordX = 10;
+	var plus=true;
+	var minus= false;
+	// var cordY = 250;
+	function preload(){
+		bowl = loadImage('Dog/pics/bowl.png');
+		win = loadImage('Dog/pics/window.png');
+		bed = loadImage('Dog/pics/bed.png');
+		dog = loadImage('Dog/pics/corgi.png')
 
-	function showImage(src){
-		var img = document.createElement("img");
-		img.src = src;
-		document.body.appendChild(img);	
-		
 	}
+	function setup(){
+	    var canvas=createCanvas(1000,800);
+	    canvas.parent('game');
+	}
+	function draw(){
+		background(255);
+		image(win, 350, 0);
+		// win.resize(300, 150)
+		image(bowl, 0, 300);
+		// bowl.resize(200, 200);
+		image(dog, cordX, 250);
+		dog.resize(dogX, dogY);
+		image(bed, 800, 300);
+		bed.resize(200, 120);
+		
+		if (plus==true && minus==false){
+			cordX+=3;
+		} if (minus==true && plus==false){
+			cordX-=3;
+		}
 
-	function expand(){ 
-		if (size < 520) {
-			size = size + 50;
-			rect.style.width = size + 'px';
-			rect.style.height = rect.style.width;
-			console.log(size)
+		if(cordX>=600){
+			plus=false;
+			minus=true;
+		} else if (cordX<=10){
+			plus=true;
+			minus=false;
 		}
-		
+
+		if (dogX>= 320){
+			cordX = 460;
+		}
+
 	}
-	function remove(){
-		if (size == 520){
-			var dead = showImage("deaddog.png");
-			rect.remove();
-			size = size+10;
-			
-		}
-		if (size == 530) {
-			alert("Uhhh ohhhh!");
-		}
+	function dead(){
+		if (dogX >= 320){
+  			alert('Uh Oh');
+ 
+  		}
+	}
+	function mousePressed(){
+		if (((mouseX >= 0) && (mouseX <= 0+bowl.width)) && ((mouseY >= 300) && (mouseY <= 300+bowl.height))) {
+    		dogX = dogX + 20;
+    		dogY = dogY + 10;
+  		}
+  		dead();
+  		// if (((mouseX >= 0) && (mouseX <= 0+bowl.width)) && ((mouseY >= 300) && (mouseY <= 300+bowl.height))) {
+    // 		dogX = dogX + 10;
+    // 		dogY = dogY + 10;
+  		// }
+	}
 	
-
-	}
-
-	rect.addEventListener("click", expand);
-	rect.addEventListener("click", remove);
-	// button.addEventListener('click', clickHandler);
+	
 
 </script>
 </body>
