@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GAME 2</title>
+	<style type="text/css">
+		body{
+			background-color: #7466B1;
+		}
+		html,body, #container{
+			height:98%;
+		}
+		#container{
+			width: 1200px;
+			
+			margin: auto;
+			background-color: #C4C8FF;
+
+		}
+		h1{
+			font-size: 25px;
+
+			padding: 20px;
+			display: flex;
+			justify-content: center;
+			width: 75%;
+			margin: auto;
+			}
+		img{
+			width:65%;
+		}
+		.games div{
+			width: 100%;
+			display: block;
+			float: left;
+			text-align: center;
+		}
+		a{
+			text-decoration: none;
+			color:black;
+		}
+		h1:hover{
+			color: #7466B1;
+		}
+	</style>
+</head>
+<body>
+<div id="container">
+<a href="index.html"><h1> INSERT TITLE </h1></a>
+<section class="games">
+	<div id="game"></div>
+</section>
+
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.8/p5.min.js"></script>
+<script>
+var apple, bomb, life;
+var counter;
+var lives;
+var	AppX;
+var	AppX2;
+var	AppX3;
+var	AppX4;
+var	AppX5;
+var	AppX6;
+var	AppX7;
+var	AppX8;
+	
+var	Lev1;
+var	Lev2;
+var	Lev3;
+var	Lev4;
+var	Lev5;
+var	Lev6;
+var	Lev7;
+var	Lev8;
+
+var	value;
+var	value2;
+var	value3;
+var	value4;
+var	value5;
+var	value6;
+var	value7;
+var	value8;
+var	counter;
+var	over;
+var	restart;
+
+
+
+function preload(){
+	apple = loadImage("Game4/apple.png");
+
+	life= loadImage("Game4/life.png");
+
+}
+function setup(){
+	var canvas=createCanvas(1000,550);
+    canvas.parent('game');
+     counter=0;
+ 	lives=3;
+	AppX=155;
+	AppX2=475;
+	AppX3=795;
+	AppX4=315;
+	AppX5=635;
+	AppX6=155;
+	AppX7=475;
+	AppX8=795;
+	
+	Lev1=-50;
+	Lev2=-50;
+	Lev3=-50;
+	Lev4=-200;
+	Lev5=-200;
+	Lev6=-350;
+	Lev7=-350;
+	Lev8=-350;
+	value=false;
+	value2=false;
+	value3=false;
+	value4=false;
+	value5=false;
+	value6=false;
+	value7=false;
+	value8=false;
+	counter=0;
+	over=false;
+	restart=false;
+  }
+function gameOver() { 
+	textSize(130);
+	stroke(255);
+  	strokeWeight(4);
+  	fill(203,230,255);
+	text("GAME OVER",100,275);
+	counter=counter;
+}
+
+function restartGame() { 
+ 	counter=0;
+ 	lives=3;
+	AppX=155;
+	AppX2=475;
+	AppX3=795;
+	AppX4=315;
+	AppX5=635;
+	AppX6=155;
+	AppX7=475;
+	AppX8=795;
+	
+	Lev1=-50;
+	Lev2=-50;
+	Lev3=-50;
+	Lev4=-200;
+	Lev5=-200;
+	Lev6=-350;
+	Lev7=-350;
+	Lev8=-350;
+	value=false;
+	value2=false;
+	value3=false;
+	value4=false;
+	value5=false;
+	value6=false;
+	value7=false;
+	value8=false;
+	counter=0;
+	over=false;
+	restart=false;
+}
+
+  function draw(){
+  	background(255);
+  	fill(100);
+  	textSize(20);
+  	text("Score: "+counter, 900, 25);
+  	text("Lives: ", 10, 25);
+  	
+  if(lives==3){
+  		image(life,65,5);
+  		image(life,65+10+life.width,5);
+  		image(life,65+20+life.width*2,5);
+  }if(lives==2){
+		image(life,65,5);
+  		image(life,65+10+life.width,5);
+  }if (lives==1){
+		image(life,65,5);
+  }if (lives==0){
+  	over=true;
+  }
+
+  	image(apple, AppX, Lev1);
+  	image(apple, AppX2, Lev2);
+  	image(apple, AppX3, Lev3);
+  	image(apple, AppX4, Lev4);
+  	image(apple, AppX5, Lev5);
+  	image(apple, AppX6,	Lev6);
+  	image(apple, AppX7, Lev7);
+  	image(apple, AppX8, Lev8);
+
+
+  if (over==false){
+  	if (Lev1<=600 && lives>0){
+  		Lev1+=1;
+  	} if (Lev1==550){
+  		lives-=1;
+  	}if (Lev1>600){
+  		value=true;
+  	}//end else
+
+  	if (Lev2<=600 && lives>0){
+  		Lev2+=1;
+  	} if (Lev2==550){
+  		lives-=1;
+  	}if (Lev2>600){
+  		value2=true;
+  	}//end else
+
+  	if (Lev3<=600 && lives>0){
+  		Lev3+=2;
+  	} if (Lev3==550){
+  		lives-=1;
+  	}if (Lev3>600){
+  		value3=true;
+  	}//end else
+
+  	if (Lev4<=600 && lives>0){
+  		Lev4+=1;
+  	} if (Lev4==550){
+  		lives-=1;
+  	}if (Lev4>600){
+  		value4=true;
+  	}//end else
+
+  	if (Lev5<=600 && lives>0){
+  		Lev5+=1;
+  	} if (Lev5==550){
+  		lives-=1;
+  	}if (Lev5>600){
+  		value5=true;
+  	}//end else
+
+  	if (Lev6<=600 && lives>0){
+  		Lev6+=1;
+  	} if (Lev6==550){
+  		lives-=1;
+  	}if (Lev6>600){
+  		value6=true;
+  	}//end else
+
+  	if (Lev7<=600 && lives>0){
+  		Lev7+=2;
+  	} if (Lev7==550){
+  		lives-=1;
+  	}if (Lev7>600){
+  		value7=true;
+  	}//end else
+
+  	if (Lev8<=600 && lives>0){
+  		Lev8+=2;
+  	} if (Lev8==550){
+  		lives-=1;
+  	}if (Lev8>600){
+  		value8=true;
+  	}//end else
+  	
+  	
+  }
+   console.log(lives);
+   console.log("level"+ Lev1)
+  if(over==true){
+  	gameOver();
+  	noStroke();
+  	fill(95,208,255);
+  	rect(400,400,200,75);
+  	noStroke();
+  	fill(255);
+  	textSize(35);
+  	text("RESTART",420,450);
+  }
+  if (restart==true){
+  	restartGame();
+  }
+  if(over==false){
+  	if (value==true){
+  		Lev1=Lev6-300;
+  		counter+=1;
+  		value=false;
+  	} else if (value2==true){
+  		Lev2=Lev7-300;
+  		counter+=1;
+  		value2=false;
+  	} else if (value3==true){
+  		Lev3=Lev8-300;
+  		counter+=1;
+  		value3=false;
+  	}else if (value4==true){
+  		Lev4=Lev1-150;
+  		counter+=1;
+  		value4=false;
+  	}else if (value5==true){
+  		Lev5=Lev1-150;
+  		counter+=1;
+  		value5=false;
+  	}else if (value6==true){
+  		Lev6=Lev1-300;
+  		counter+=1;
+  		value6=false;
+  	}else if (value7==true){
+  		Lev7=Lev2-300;
+  		counter+=1;
+  		value7=false;
+  	}else if (value8==true){
+  		Lev8=Lev3-300;
+  		counter+=1;
+  		value8=false;
+  	}
+  }
+ 
+
+
+  }//end draw
+
+function mousePressed() {
+  if (((mouseX >= 155) && (mouseX <= 230)) && ((mouseY >= Lev1) && (mouseY <= Lev1+ 75))) {
+    value = true;
+  } else if (((mouseX >= 475) && (mouseX <= 550)) && ((mouseY >= Lev2) && (mouseY <= Lev2+75))) {
+    value2 = true;
+  } else if (((mouseX >= 795) && (mouseX <= 870)) && ((mouseY >= Lev3) && (mouseY <= Lev3+75))) {
+    value3 = true;
+  } else if (((mouseX >= 315) && (mouseX <= 390)) && ((mouseY >= Lev4) && (mouseY <= Lev4+75))) {
+    value4 = true;
+  } else if (((mouseX >= 635) && (mouseX <= 710)) && ((mouseY >= Lev5) && (mouseY <= Lev5+75))) {
+    value5 = true;
+  } else if (((mouseX >= 155) && (mouseX <= 230)) && ((mouseY >= Lev6) && (mouseY <= Lev6+75))) {
+    value6 = true;
+  }else if (((mouseX >= 475) && (mouseX <= 550)) && ((mouseY >= Lev7) && (mouseY <= Lev7+75))){
+    value7 = true;
+  } else if (((mouseX >= 795) && (mouseX <= 870)) && ((mouseY >= Lev8) && (mouseY <= Lev8+75))){
+    value8 = true;
+  } else if(((mouseX >= 400) && (mouseX <= 600)) && ((mouseY >= 400) && (mouseY <= 475)) && (over==true)){
+  	restart=true;
+  }
+  //end else
+
+}
+
+  </script>
+</body>
+</html>
+
+
+
+
+
