@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Feed the Pet</title>
+</head>
+<style type="text/css">
+	#rect{
+		/*width: 20px;
+		height: 20px;*/
+		/*background-color: rgb(255,0,127);*/
+		margin-top: 5%;
+		margin-bottom: 50%;
+	}
+	img{
+		position: center;
+		/*margin-bottom: 200%;
+		margin-left: 30%;
+		margin-right: 100%;*/
+	}
+	h1, p{
+		text-align: center;
+	}
+</style>
+<body>
+<h1>Feed the Pet</h1>
+<p>Click on the pet to feed it!</p>
+
+<center>
+	<!-- <div id="rect"> -->
+	<img id="rect" src="dog.png" height="30" width="20">
+	<!-- </div> -->
+</center>
+
+<script>
+	var rect = document.getElementById("rect");
+	var size = 20;
+
+	function showImage(src){
+		var img = document.createElement("img");
+		img.src = src;
+		document.body.appendChild(img);	
+		
+	}
+
+	function expand(){ 
+		if (size < 520) {
+			size = size + 50;
+			rect.style.width = size + 'px';
+			rect.style.height = rect.style.width;
+			console.log(size)
+		}
+		
+	}
+	function remove(){
+		if (size == 520){
+			var dead = showImage("deaddog.png");
+			rect.remove();
+			size = size+10;
+			
+		}
+		if (size == 530) {
+			alert("Uhhh ohhhh!");
+		}
+	
+
+	}
+
+	rect.addEventListener("click", expand);
+	rect.addEventListener("click", remove);
+	// button.addEventListener('click', clickHandler);
+
+</script>
+</body>
+</html>
