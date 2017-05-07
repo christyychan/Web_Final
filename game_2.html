@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title> GAME 2</title>
+	<title>GAME 3</title>
 	<style type="text/css">
 		body{
 			background-color: #7466B1;
@@ -54,31 +54,272 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.8/p5.min.js"></script>
 <script>
-var dust;
+var alien, nerf, aim, target;
+var Alix;
+var Alix2;
+var Alix3;
+var Alix4;
+var Alix5;
+var Alix6;
+var Alix7;
+var Alix8;
+var value;
+var value2;
+var value3;
+var value4;
+var value5;
+var value6;
+var value7;
+var value8;
+var counter;
+var over;
+var restart;
+
 function preload(){
-	dust=loadImage("dust.png");
+	alien = loadImage("Game3/pics/alien.png");
+	nerf = loadImage("Game3/pics/nerfGun.png");
+	aim = loadImage("Game3/pics/target.png");
+	target = loadImage("Game3/pics/vector.png");
 }
 function setup(){
-    var canvas=createCanvas(1000,600);
+    var canvas=createCanvas(1000,550);
     canvas.parent('game');
-    background(255);
-
+    bob = new Bullet(mouseX + 50, 750);
+    Alix=0;
+	Alix2=-300;
+	Alix3=-600;
+	Alix4=-900;
+	Alix5=-150;
+	Alix6=-450;
+	Alix7=-750;
+	Alix8=-1050;
+	value=false;
+	value2=false;
+	value3=false;
+	value4=false;
+	value5=false;
+	value6=false;
+	value7=false;
+	value8=false;
+	counter=0;
+	over=false;
+	restart=false;
   }
+
+function gameOver() { 
+	textSize(130);
+	stroke(255);
+  	strokeWeight(4);
+  	fill(203,230,255);
+	text("GAME OVER",100,275);
+	counter=counter;
+}
+function restartGame() { 
+	Alix=0;
+	Alix2=-300;
+	Alix3=-600;
+	Alix4=-900;
+	Alix5=-150;
+	Alix6=-450;
+	Alix7=-750;
+	Alix8=-1050;
+	value=false;
+	value2=false;
+	value3=false;
+	value4=false;
+	value5=false;
+	value6=false;
+	value7=false;
+	value8=false;
+	counter=0;
+	over=false;
+	restart=false;
+}
 
   function draw(){
+  	background(255);
+  	textSize(20);
+  	text("Score: "+counter, 900, 25);
+
+  	noStroke();
+  	fill(0);
+  	rect(Alix+alien.width/2, 20+alien.height,10,15);
+  	image(alien, Alix, 25);
+  	rect(Alix2+alien.width/2, 20+alien.height,10,15);
+  	image(alien, Alix2, 25);
+  	rect(Alix3+alien.width/2, 20+alien.height,10,15);
+  	image(alien, Alix3, 25);
+  	rect(Alix4+alien.width/2, 20+alien.height,10,15);
+  	image(alien, Alix4, 25);
+
+  	rect(Alix5+alien.width/2, 220+alien.height,10,15);
+  	image(alien, Alix5, 225);
+  	rect(Alix6+alien.width/2, 220+alien.height,10,15);
+  	image(alien, Alix6, 225);
+  	rect(Alix7+alien.width/2, 220+alien.height,10,15);
+  	image(alien, Alix7, 225);
+  	rect(Alix8+alien.width/2, 220+alien.height,10,15);
+  	image(alien, Alix8, 225);
+
+  	noStroke();
+	fill(0);
+	rect(0,400,1000,10);  
+	rect(0,200,1000,10);
+  	
+  	if (over==false){
+  	if (Alix<=1050){
+  		Alix+=1;
+  	} else{
+  		over=true;
+  	}//end else
+
+  	if (Alix2<=1050){
+  		Alix2+=1;
+  	} else{
+  		over=true;
+  	}//end else
+
+  	if (Alix3<=1050){
+  		Alix3+=1;
+  	} else{
+  		over=true;
+  	}//end else
+
+  	if (Alix4<=1050){
+  		Alix4+=1;
+  	} else{
+  		over=true;
+  	}//end else
+
+  	if (Alix5<=1050){
+  		Alix5+=1;
+  	} else{
+  		over=true;
+  	}//end else
+
+  	if (Alix6<=1050){
+  		Alix6+=1;
+  	} else{
+  		over=true;
+  	}//end else
+
+  	if (Alix7<=1050){
+  		Alix7+=1;
+  	} else{
+  		over=true;
+  	}//end else
+
+  	if (Alix8<=1050){
+  		Alix8+=1;
+  	} else{
+  		over=true;
+  	}//end else
+  }//end if
+  if(over==true){
+  	gameOver();
+  	noStroke();
+  	fill(95,208,255);
+  	rect(400,400,200,75);
+  	noStroke();
+  	fill(255);
+  	textSize(35);
+  	text("RESTART",420,450);
+  }
+  if (restart==true){
+  	restartGame();
+  }
+  if(over==false){
+  	if (value==true){
+  		Alix=Alix4-300;
+  		counter+=1;
+  		value=false;
+  	} else if (value2==true){
+  		Alix2=Alix-300;
+  		counter+=1;
+  		value2=false;
+  	} else if (value3==true){
+  		Alix3=Alix2-300;
+  		counter+=1;
+  		value3=false;
+  	}else if (value4==true){
+  		Alix4=Alix3-300;
+  		counter+=1;
+  		value4=false;
+  	}else if (value5==true){
+  		Alix5=Alix8-300;
+  		counter+=1;
+  		value5=false;
+  	}else if (value6==true){
+  		Alix6=Alix5-300;
+  		counter+=1;
+  		value6=false;
+  	}else if (value7==true){
+  		Alix7=Alix6-300;
+  		counter+=1;
+  		value7=false;
+  	}else if (value8==true){
+  		Alix8=Alix7-300;
+  		counter+=1;
+  		value8=false;
+  	}
+  }//end if over
+
+	
+
+  	image(nerf, mouseX, 375);
+   
+
+  	push();
+  	tint(0);
+  	image(aim, mouseX - (aim.width / 2), mouseY - (aim.height / 2));
+  	pop();
+  	bob.display();
+  }//end draw
+
+  function Bullet(xloc, yloc) {
+  var x = xloc;
+  var y = yloc;
+  
+  this.display = function() { 
+  if (mouseIsPressed){ //if the mouse is pressed the the bullet will be where the mouse is
+                      //it will also be in the middle of the ner gun scope
+      x = mouseX;
+      y = mouseY;
+  }else{
+    x=mouseX+50;
+    y=890;
+  } //end else
+      // the circle that represents the bullet being fired
       noStroke();
-      fill(255);
-      rect(mouseX,mouseY,30,30);
-      rectMode(RADIUS);
+      fill(0,100);
+      ellipse(x, y, 25, 25);
+    } //end display
+} // end Bullet
 
-
-     image(dust, random(1000), random(600));
-
+function mousePressed() {
+  if (((mouseX >= Alix) && (mouseX <= Alix+alien.width)) && ((mouseY >= 25) && (mouseY <= 25+alien.height))) {
+    value = true;
+  } else if (((mouseX >= Alix2) && (mouseX <= Alix2+alien.width)) && ((mouseY >= 25) && (mouseY <= 25+alien.height))) {
+    value2 = true;
+  } else if (((mouseX >= Alix3) && (mouseX <= Alix3+alien.width)) && ((mouseY >= 25) && (mouseY <= 25+alien.height))) {
+    value3 = true;
+  } else if (((mouseX >= Alix4) && (mouseX <= Alix4+alien.width)) && ((mouseY >= 25) && (mouseY <= 25+alien.height))) {
+    value4 = true;
+  } else if (((mouseX >= Alix5) && (mouseX <= Alix5+alien.width)) && ((mouseY >= 225) && (mouseY <= 225+alien.height))) {
+    value5 = true;
+  } else if (((mouseX >= Alix6) && (mouseX <= Alix6+alien.width)) && ((mouseY >= 225) && (mouseY <= 225+alien.height))) {
+    value6 = true;
+  } else if (((mouseX >= Alix7) && (mouseX <= Alix7+alien.width)) && ((mouseY >= 225) && (mouseY <= 225+alien.height))){
+    value7 = true;
+  } else if (((mouseX >= Alix8) && (mouseX <= Alix8+alien.width)) && ((mouseY >= 225) && (mouseY <= 225+alien.height))){
+    value8 = true;
+  }else if(((mouseX >= 400) && (mouseX <= 600)) && ((mouseY >= 400) && (mouseY <= 475)) && (over==true)){
+  	restart=true;
   }
+  //end else
 
-  function mousePressed(){
-    background(255);
-  }
+}
+
   </script>
 </body>
 </html>
