@@ -64,18 +64,33 @@
 
 <script>
 	var bowl, win, bed, dog;
-	var dogX = 100;
-	var dogY = 100;
+	var dogX = 200;
+	var dogY = 171;
 	var cordX = 10;
 	var plus=true;
 	var minus= false;
 	var backgroundColor = 255;
+
+	var day=true;
+	var night=false;
+	var blu= 60;
+	var gre=30;
+	var sunx=0;
+	var suny=50;
+	var bedval=false;
+	var coma=false;
+	var foodcoma;
+
+
+
 	// var cordY = 250;
 	function preload(){
 		bowl = loadImage('Dog/pics/bowl.png');
 		win = loadImage('Dog/pics/window.png');
 		bed = loadImage('Dog/pics/bed.png');
 		dog = loadImage('Dog/pics/corgi.png')
+		foodcoma=loadImage('Dog/pics/corgi_coma.png');
+		sleep=loadImage('Dog/pics/sleep.png');
 
 	}
 	function setup(){
@@ -87,15 +102,8 @@
 		fill(252, 246, 232);
 		noStroke();
 		rect(0, 300, 1000, 500)
-		image(win, 350, 0);
-		// win.resize(300, 150)
 		
-		// bowl.resize(200, 200);
-		image(dog, cordX, 250);
-		dog.resize(dogX, dogY);
-		image(bed, 800, 300);
-		bed.resize(200, 120);
-		image(bowl, 0, 300);
+		// win.resize(300, 150)
 		
 		if (plus==true && minus==false){
 			cordX+=3;
@@ -115,25 +123,81 @@
 			cordX = 460;
 		}
 
-	}
+
+		if (bedval==true){
+			image(sleep,700,350);
+
+			noStroke();
+			fill(0,gre,blu);
+			rect(375,20,win.width-50, win.height-60);
+		if (day==true && night==false){
+			blu+=10;
+			gre+=5
+			sunx+=4;
+			suny+=2;
+			
+		} if (night== true && day==false){
+			blu-=10;
+			gre-=5;
+			sunx-=4;
+			suny-=2;
+		}
+
+		if (sunx>=400){
+			day=false;
+			night=true;
+		} if (sunx<=0){
+			day=true;
+			night=false;
+		}
+
+
+		}//end bed 
+		else if (coma==true){
+			image(bed,700,350);
+			noStroke();
+			fill(0,gre,blu);
+			rect(375,20,win.width-50, win.height-60);
+
+			image(foodcoma,cordX-150,250);
+			noStroke();
+			fill(150);
+			textSize(30);
+			text('FOOD COMA ACHIEVED!', 10, 100);
+		}
+		else{
+			image(dog, cordX, 250);
+			dog.resize(dogX, dogY);
+
+			image(bed,700,350);
+			noStroke();
+			fill(0,gre,blu);
+			rect(375,20,win.width-50, win.height-60);
+		}
+		bowl.resize(150, 105);		
+		image(bowl, 50, 350);
+		image(win, 350, 0);
+	}//end draw
 	function dead(){
 		if (dogX >= 320){
-  			alert('Uh Oh');
+  			//alert('Uh Oh');
+  			coma=true;
+
  
   		}
 	}
 	function mousePressed(){
-		if (((mouseX >= 0) && (mouseX <= 0+bowl.width)) && ((mouseY >= 300) && (mouseY <= 300+bowl.height))) {
+		if (((mouseX >= 50) && (mouseX <= 50+bowl.width)) && ((mouseY >= 350) && (mouseY <= 350+bowl.height))) {
     		dogX = dogX + 20;
     		dogY = dogY + 10;
   		}
   		dead();
-  		if (((mouseX >= 350) && (mouseX <= 350+win.width)) && ((mouseY >= 0) && (mouseY <= win.height)) && backgroundColor==255) {
-    		backgroundColor = 0;
-  		} 
-  		else if (((mouseX >= 350) && (mouseX <= 350+win.width)) && ((mouseY >= 0) && (mouseY <= win.height)) && backgroundColor==0) {
-    		backgroundColor = 255;
-  		} 
+  		
+  		if (((mouseX >= 700) && (mouseX <= 950)) && ((mouseY >= 350) && (mouseY <= 450) && (coma==false))){
+			bedval=true;
+			} else{
+			bedval=false;
+			} 
 	}
 	
 	
